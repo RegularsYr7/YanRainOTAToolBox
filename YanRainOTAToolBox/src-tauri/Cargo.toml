@@ -1,0 +1,92 @@
+[package]
+name = "YanRainOTAToolBox"
+version = "1.1.2"
+description = "A Tauri App"
+authors = ["you"]
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+# The `_lib` suffix may seem redundant but it is necessary
+# to make the lib name unique and wouldn't conflict with the bin name.
+# This seems to be only an issue on Windows, see https://github.com/rust-lang/cargo/issues/8519
+name = "YanRainToolBox_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[features]
+default = []
+strict-boot-gate = []
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+prost-build = "0.13"
+protox = "0.7"
+
+[dependencies]
+tauri = { version = "2", features = [] }
+tauri-plugin-opener = "2"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+serde_yaml = "0.9"
+tokio = { version = "1", features = ["full"] }
+thiserror = "1"
+anyhow = "1"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+tracing-appender = "0.2"
+dirs = "5"
+uuid = { version = "1", features = ["v4"] }
+chrono = { version = "0.4", features = ["serde"] }
+parking_lot = "0.12"
+tauri-plugin-dialog = "2.6.0"
+tauri-plugin-notification = "2"
+zip = "2"
+prost = "0.13"
+reqwest = { version = "0.12", features = ["stream", "blocking", "json", "cookies", "gzip", "deflate", "brotli"] }
+regex = "1"
+futures-util = "0.3"
+urlencoding = "2"
+url = "2"
+base64 = "0.22"
+sha1 = "0.10"
+xz2 = "0.1"
+zstd = "0.13"
+bzip2 = "0.5"
+flate2 = "1"
+sha2 = "0.10"
+aes = "0.8"
+cbc = { version = "0.1", features = ["alloc"] }
+brotli = "7"
+tauri-plugin-clipboard-manager = "2"
+tauri-plugin-shell = "2.3.5"
+sysinfo = "0.33"
+qrcode = "0.14"
+rand = "0.8"
+obfstr = "0.4"
+ed25519-dalek = { version = "2", features = ["std"] }
+async-trait = "0.1"
+hmac = "0.12"
+hex = "0.4"
+mdns-sd = { version = "0.18.2", features = ["async"] }
+
+[target.'cfg(windows)'.dependencies]
+windows = { version = "0.58", features = [
+    "Win32_UI_WindowsAndMessaging",
+    "Win32_System_SystemInformation",
+    "Win32_System_Ioctl",
+    "Win32_System_IO",
+    "Win32_System_Registry",
+    "Win32_Storage_FileSystem",
+    "Win32_Security",
+    "Win32_Foundation",
+] }
+
+
+[profile.release]
+strip = true        # 去除调试符号，大幅减小二进制体积
+lto = true           # 链接时优化，减小体积 + 提升运行性能
+codegen-units = 1    # 单编译单元，允许更深度优化
+opt-level = "s"      # 优化体积（"s"=size，"z"=更激进的体积优化）
+panic = "abort"      # abort 替代 unwind，减少运行时体积
+

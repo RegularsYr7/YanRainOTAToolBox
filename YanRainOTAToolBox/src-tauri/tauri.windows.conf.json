@@ -1,0 +1,33 @@
+{
+  "bundle": {
+    "publisher": "烟雨工作室",
+    "copyright": "© 2024-2026 烟雨 (YanRain). All rights reserved.",
+    "shortDescription": "现代化 Android 玩机工具箱",
+    "longDescription": "烟雨 OTAShell 是一款基于 Tauri + React + Rust 构建的全新现代化 Android 玩机工具箱，集成 ADB/Fastboot 设备管理、应用管理、文件传输、投屏控制、脱机修补、下载管理等功能。",
+    "targets": ["nsis"],
+    "windows": {
+      "allowDowngrades": true,
+      "nsis": {
+        "languages": ["SimpChinese"],
+        "displayLanguageSelector": false,
+        "installerIcon": "icons/icon.ico",
+        "installMode": "both",
+        "compression": "lzma",
+        "startMenuFolder": "RainyOTAToolBox",
+        "installerHooks": "nsis/hooks.nsi"
+      },
+      "webviewInstallMode": {
+        "type": "embedBootstrapper",
+        "silent": true
+      }
+    },
+    "resources": {
+      "../resources/scripts/*": "resources/scripts/",
+      "../resources/push/*": "resources/push/",
+      "../resources/platform-tools/windows/*": "resources/platform-tools/windows/",
+      "../resources/scrcpy/icon.png": "resources/scrcpy/icon.png",
+      "../resources/scrcpy/windows/x86_64/*": "resources/scrcpy/windows/x86_64/",
+      "../resources/aria2/windows/aria2c.exe": "resources/aria2/windows/aria2c.exe"
+    }
+  }
+}

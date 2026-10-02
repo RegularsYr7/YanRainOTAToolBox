@@ -1,0 +1,36 @@
+# ---- 通用 ----
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# ---- Node / Vite ----
+node_modules/
+dist/
+dist-ssr/
+*.local
+.env
+.env.*
+!.env.example
+
+# ---- Rust / Tauri ----
+YanRainOTAToolBox/src-tauri/target/
+YanRainOTAToolBox/src-tauri/gen/
+
+# ---- 构建产物 ----
+release/
+bundle/
+*.exe
+*.msi
+*.dmg
+*.deb
+*.rpm
+*.AppImage
+
+# ---- 运行时资源（体积较大，不入库，由脚本下载）----
+YanRainOTAToolBox/resources/platform-tools/
+YanRainOTAToolBox/resources/scrcpy/
+YanRainOTAToolBox/resources/aria2/

@@ -1,0 +1,54 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "YanRainOTAToolBox",
+  "version": "1.1.2",
+  "identifier": "com.administrator.YanRainOTAToolBox",
+  "build": {
+    "beforeDevCommand": "pnpm dev",
+    "devUrl": "http://localhost:1420",
+    "beforeBuildCommand": "pnpm build",
+    "frontendDist": "../dist",
+    "features": [
+      "strict-boot-gate"
+    ]
+  },
+  "app": {
+    "windows": [
+      {
+        "title": "烟雨OTA工具箱",
+        "devtools": false,
+        "width": 1100,
+        "height": 750,
+        "minWidth": 1050,
+        "minHeight": 700,
+        "maximizable": true,
+        "decorations": false,
+        "transparent": true,
+        "center": true
+      }
+    ],
+    "security": {
+      "csp": null
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": "nsis",
+    "publisher": "烟雨工作室",
+    "copyright": "© 2024-2026 烟雨 (YanRain)",
+    "category": "Utility",
+    "shortDescription": "现代化 Android 玩机工具箱",
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.icns",
+      "icons/icon.ico"
+    ],
+    "resources": {
+      "../resources/scripts/*": "resources/scripts/",
+      "../resources/push/*": "resources/push/",
+      "../resources/scrcpy/icon.png": "resources/scrcpy/icon.png"
+    }
+  }
+}
